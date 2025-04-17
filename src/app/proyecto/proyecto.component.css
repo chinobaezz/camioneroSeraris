@@ -1,0 +1,17 @@
+#carouselExampleCaptions {
+    max-width: 800px; /* Ajusta el tamaño del carrusel */
+    margin: 0 auto; /* Centra el carrusel */
+  }
+  
+  #carouselExampleCaptions .carousel-inner {
+    max-height: 400px; /* Ajusta la altura del carrusel */
+  }
+  
+  #carouselExampleCaptions .carousel-item img {
+    object-fit: cover; /* Ajusta la imagen para que cubra todo el espacio sin distorsionarse */
+    max-height: 400px; /* Ajusta la altura máxima de las imágenes */
+  }
+  .card {
+    margin-top: 20px; /* Ajusta el valor según lo que necesites */
+  }
+  
