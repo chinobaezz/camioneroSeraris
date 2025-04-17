@@ -1,0 +1,29 @@
+.navbar {
+    background: linear-gradient(90deg, #c6f6c4, #a8e6a2); /* Degradado verde manzana suave */
+    padding: 1rem;
+    border-bottom: 2px solid #7fd781;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .navbar-brand {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #2f6b2f !important;
+  }
+  
+  .navbar-nav {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .nav-link {
+    color: #2f6b2f !important;
+    font-weight: 500;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+
+  }
+  
+  .nav-link:hover {
+    transform: scale(1.05);
+    color: #121a12 !important;
+  }
