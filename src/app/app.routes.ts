@@ -5,10 +5,12 @@ import { HomeComponent } from './home/home.component';
 import { RouterModule } from '@angular/router';
 import { ProyectoComponent } from './proyecto/proyecto.component';
 import { NoticiasComponent } from './noticias/noticias.component';
+import { LoginComponent } from './login/login.component';
 
 export const routes: Routes = [
     { path:'', component :HomeComponent},
     { path: 'nav', component: NavComponent },
+    { path: 'login', component: LoginComponent },
     { path: 'home', component: HomeComponent },
     { path: 'inicio', component: InicioComponent },
     { path: 'proyecto', component: ProyectoComponent },

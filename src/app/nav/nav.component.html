@@ -13,13 +13,13 @@
     </button>
 
     <!-- Menú colapsable -->
-    <div class="collapse navbar-collapse" id="navbarNav">
+    <div #myNav class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link" routerLink="/home">Inicio</a></li>
-        <li class="nav-item"><a class="nav-link" routerLink="/inicio">Control</a></li>
-        <li class="nav-item"><a class="nav-link" routerLink="/noticia">Noticias</a></li>
-        <li class="nav-item"><a class="nav-link" routerLink="/proyecto">Proyectos</a></li>
-        <li class="nav-item"><a class="nav-link" routerLink="/contacto">Contacto</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/home" (click)="closeNav()">Inicio</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/inicio" (click)="closeNav()">Control</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/noticia" (click)="closeNav()">Noticias</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/proyecto" (click)="closeNav()">Proyectos</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/login" (click)="closeNav()">Login</a></li>
       </ul>
     </div>
   </div>

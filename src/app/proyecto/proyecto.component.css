@@ -7,9 +7,10 @@
     max-height: 400px; /* Ajusta la altura del carrusel */
   }
   
-  #carouselExampleCaptions .carousel-item img {
+  #carouselExampleCaptions .carousel-item img {   
+    width: 100%;
     object-fit: cover; /* Ajusta la imagen para que cubra todo el espacio sin distorsionarse */
-    max-height: 400px; /* Ajusta la altura máxima de las imágenes */
+    height: 700px; /* Ajusta la altura  de las imágenes */
   }
   .card {
     margin-top: 20px; /* Ajusta el valor según lo que necesites */
