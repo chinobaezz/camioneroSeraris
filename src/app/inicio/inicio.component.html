@@ -24,8 +24,63 @@
       </div>
     </div>
   
-    <!-- Tabla de Conceptos -->
-    <table class="table table-bordered text-center">
+   
+    <!-- Formulario para Ingresar Datos -->
+    <h3 class="mt-4">Ingresar Datos</h3>
+    <form (ngSubmit)="calcularRecibo()">
+      <div class="row">
+        <div class="col-md-4">
+          <label for="basico" class="form-label">Sueldo Básico</label>
+          <input type="number" id="basico" class="form-control" [(ngModel)]="recibo.basico" name="basico" required />
+        </div>
+        <div class="form-group">
+          <label for="adicionalRamaLogistica">Adicional Rama Logística (16%)</label>
+          <input type="number" id="adicionalRamaLogistica" class="form-control"
+            [(ngModel)]="recibo.adicionalRamaLogistica" name="adicionalRamaLogistica" readonly />
+        </div>
+  
+       
+      <div class="col-md-4">
+        <label for="diasFeriados">Días Feriados</label>
+        <input type="number" id="diasFeriados" class="form-control" [(ngModel)]="recibo.diasFeriados" name="diasFeriados" (input)="actualizarValores()"/>
+      </div>
+  
+      <div class="col-md-4">
+        <label for="feriadoMonto">Monto Feriado</label>
+        <input type="number" id="feriadoMonto" class="form-control" [(ngModel)]="recibo.feriadoMonto" name="feriadoMonto" readonly />
+      </div>
+  
+      <div class="col-md-4">
+        <label for="horasExtras100">Horas Extras 100%</label>
+        <input type="number" id="horasExtras100" class="form-control" [(ngModel)]="recibo.horasExtras100" name="horasExtras100" (input)="actualizarValores()"/>
+      </div>
+
+      <!-- al 50 basico por 0.01 % 4 x 3 -->
+  
+      <div class="col-md-4">
+        <label for="descuento" class="form-label">Descuento (%)</label>
+        <input type="number" id="descuento" class="form-control" [(ngModel)]="descuento" name="descuento" (input)="calcularRecibo()" />
+      </div>
+
+
+      <!--dias para viatico-->
+      <div class="col-md-4">
+        <label for="diasTrabajados" class="form-label">Días Trabajados (Adicional x dia + 16% + 20%)</label>
+        <input type="number" id="diasTrabajados" class="form-control" [(ngModel)]="diasTrabajados" name="diasTrabajados" />
+      </div>
+      
+  
+        <div class="col-md-4">
+          <label for="otrosConceptos" class="form-label">Bonos no remerativo</label>
+          <input type="number" id="otrosConceptos" class="form-control" [(ngModel)]="recibo.otrosConceptos" name="otrosConceptos" />
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary mt-3">Calcular</button>
+    </form>
+   </div>
+<br>
+   <!-- Tabla de Conceptos -->
+    <table class="table table-bordered text-center tabla-recibo" >
       <thead class="table-dark">
         <tr>
           <th>Código</th>
@@ -47,7 +102,7 @@
         </tr>
         <tr>
           <td>0022</td>
-          <td>Adicional Rama Logística (14%)</td>
+          <td>Adicional Rama Logística (16%)</td>
           <td>1.0</td>
           <td>{{ recibo.adicionalRamaLogistica | currency }}</td>
           <td></td>
@@ -69,6 +124,15 @@
           <td></td>
           <td></td>
         </tr>
+        <tr>
+          <td>0106</td>
+          <td>Extras 50% Camioneros</td>
+          <td>{{ recibo.horasExtras50 }}</td>
+          <td>{{ recibo.horasExtras50Monto | currency }}</td>
+          <td></td>
+          <td></td>
+        </tr>
+        
         
         <tr>
           <td>8007</td>
@@ -78,6 +142,16 @@
           <td>{{ recibo.otrosConceptos | currency }}</td>
           <td></td>
         </tr>
+        <tr>
+          <td>0111</td>
+          <td>Adicional por días trabajados</td>
+          <td>{{ diasTrabajados }}</td>
+           <td></td>
+          <td>{{ calcularAdicionalPorDias() | currency }}</td>
+          <td></td>
+         
+        </tr>
+        
         <tr>
           <td>9001</td>
           <td>Descuento</td>
@@ -94,53 +168,6 @@
       <p><strong>Total Remunerativo:</strong> {{ recibo.basico + recibo.horasExtrasMonto + recibo.adicionalRamaLogistica + recibo.feriadoMonto| currency }}</p>
       <p><strong>Total Neto:</strong> {{ resultado | currency }}</p>
     </div>
-  
-    <!-- Formulario para Ingresar Datos -->
-    <h3 class="mt-4">Ingresar Datos</h3>
-    <form (ngSubmit)="calcularRecibo()">
-      <div class="row">
-        <div class="col-md-4">
-          <label for="basico" class="form-label">Sueldo Básico</label>
-          <input type="number" id="basico" class="form-control" [(ngModel)]="recibo.basico" name="basico" required />
-        </div>
-        <div class="form-group">
-          <label for="adicionalRamaLogistica">Adicional Rama Logística (14%)</label>
-          <input type="number" id="adicionalRamaLogistica" class="form-control"
-            [(ngModel)]="recibo.adicionalRamaLogistica" name="adicionalRamaLogistica" readonly />
-        </div>
-  
-       
-      <div class="col-md-4">
-        <label for="diasFeriados">Días Feriados</label>
-        <input type="number" id="diasFeriados" class="form-control" [(ngModel)]="recibo.diasFeriados" name="diasFeriados" (input)="actualizarValores()"/>
-      </div>
-  
-      <div class="col-md-4">
-        <label for="feriadoMonto">Monto Feriado</label>
-        <input type="number" id="feriadoMonto" class="form-control" [(ngModel)]="recibo.feriadoMonto" name="feriadoMonto" readonly />
-      </div>
-  
-      <div class="col-md-4">
-        <label for="horasExtras100">Horas Extras 100%</label>
-        <input type="number" id="horasExtras100" class="form-control" [(ngModel)]="recibo.horasExtras100" name="horasExtras100" (input)="actualizarValores()"/>
-      </div>
-      <!-- al 50 basico por 0.01 % 4 x 3 -->
-  
-      <div class="col-md-4">
-        <label for="descuento" class="form-label">Descuento (%)</label>
-        <input type="number" id="descuento" class="form-control" [(ngModel)]="descuento" name="descuento" (input)="calcularRecibo()" />
-      </div>
-  
-        <div class="col-md-4">
-          <label for="otrosConceptos" class="form-label">Bonos no remerativo</label>
-          <input type="number" id="otrosConceptos" class="form-control" [(ngModel)]="recibo.otrosConceptos" name="otrosConceptos" />
-        </div>
-      </div>
-      <button type="submit" class="btn btn-primary mt-3">Calcular</button>
-    </form>
-    <button type="button" routerLink="/planificacion" routerLinkActive>planificacion</button>
-  </div>
-  
   
   
   

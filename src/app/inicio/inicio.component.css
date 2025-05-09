@@ -1,0 +1,35 @@
+.tabla-recibo {
+    width: 100%;
+    max-width: 100px; /* evita que se estire demasiado en pantallas grandes */
+    margin: 5px auto; /* margen de 5px arriba, abajo y centrado horizontalmente */
+    border-collapse: collapse;
+    font-size: 0.95rem;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  
+  .tabla-recibo th {
+    background-color: #343a40;
+    color: #ffffff;
+    vertical-align: middle;
+    padding: 12px 8px;
+    border: 1px solid #dee2e6;
+  }
+  
+  .tabla-recibo td {
+    padding: 10px 8px;
+    vertical-align: middle;
+    border: 1px solid #dee2e6;
+  }
+  
+  .tabla-recibo tbody tr:nth-child(even) {
+    background-color: #f8f9fa;
+  }
+  
+  .tabla-recibo tbody tr:hover {
+    background-color: #e9ecef;
+    transition: background-color 0.2s ease-in-out;
+  }
+  
